@@ -29,6 +29,7 @@ router.get("/fetchMembers/", (req, res) => {
       JOIN groups ON groups.group_id = group_members.group_id
       JOIN users ON users.idNumber = group_members.idNumber
       WHERE groups.group_id = ?
+      ORDER BY users.firstName, users.lastName
   `;
   db.query(query, [groupId], (err, results) => {
     if (err) {
